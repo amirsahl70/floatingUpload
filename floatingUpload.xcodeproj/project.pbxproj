@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19D4B39E5052AD4D77CB6826 /* Pods_floatingUpload.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55931CD78C09583744D2905A /* Pods_floatingUpload.framework */; };
 		2946A0AE2116D23E00F0A98E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946A0AD2116D23E00F0A98E /* AppDelegate.swift */; };
 		2946A0B02116D23E00F0A98E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946A0AF2116D23E00F0A98E /* ViewController.swift */; };
 		2946A0B32116D23E00F0A98E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2946A0B12116D23E00F0A98E /* Main.storyboard */; };
 		2946A0B52116D23E00F0A98E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2946A0B42116D23E00F0A98E /* Assets.xcassets */; };
 		2946A0B82116D23E00F0A98E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2946A0B62116D23E00F0A98E /* LaunchScreen.storyboard */; };
+		2946A0C12116DA0700F0A98E /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 2946A0C02116DA0700F0A98E /* share.png */; };
+		2946A0C32116E79800F0A98E /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946A0C22116E79800F0A98E /* HTTPHandler.swift */; };
+		2946A0C52116E84E00F0A98E /* TooCS.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2946A0C42116E84D00F0A98E /* TooCS.cer */; };
+		2946A0C92116F4BF00F0A98E /* certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946A0C82116F4BF00F0A98E /* certificate.swift */; };
+		295223B821196DE000200939 /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295223B721196DE000200939 /* customTableViewCell.swift */; };
+		295223BA2119AD9000200939 /* upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295223B92119AD9000200939 /* upload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,15 @@
 		2946A0B42116D23E00F0A98E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2946A0B72116D23E00F0A98E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2946A0B92116D23E00F0A98E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2946A0C02116DA0700F0A98E /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = SOURCE_ROOT; };
+		2946A0C22116E79800F0A98E /* HTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHandler.swift; sourceTree = "<group>"; };
+		2946A0C42116E84D00F0A98E /* TooCS.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = TooCS.cer; path = ../../../Documents/TooCS.cer; sourceTree = "<group>"; };
+		2946A0C82116F4BF00F0A98E /* certificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = certificate.swift; sourceTree = "<group>"; };
+		295223B721196DE000200939 /* customTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
+		295223B92119AD9000200939 /* upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = upload.swift; sourceTree = "<group>"; };
+		55931CD78C09583744D2905A /* Pods_floatingUpload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_floatingUpload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87D28FC5BD2C417D02075A1 /* Pods-floatingUpload.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-floatingUpload.debug.xcconfig"; path = "Pods/Target Support Files/Pods-floatingUpload/Pods-floatingUpload.debug.xcconfig"; sourceTree = "<group>"; };
+		F79250606C5FCC2AD28B4BB4 /* Pods-floatingUpload.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-floatingUpload.release.xcconfig"; path = "Pods/Target Support Files/Pods-floatingUpload/Pods-floatingUpload.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D4B39E5052AD4D77CB6826 /* Pods_floatingUpload.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		267EFA8552E3610A503DDA4F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E87D28FC5BD2C417D02075A1 /* Pods-floatingUpload.debug.xcconfig */,
+				F79250606C5FCC2AD28B4BB4 /* Pods-floatingUpload.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2946A0A12116D23E00F0A98E = {
 			isa = PBXGroup;
 			children = (
 				2946A0AC2116D23E00F0A98E /* floatingUpload */,
 				2946A0AB2116D23E00F0A98E /* Products */,
+				267EFA8552E3610A503DDA4F /* Pods */,
+				88060CF05F8BD7AE3AA2FB78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +82,28 @@
 		2946A0AC2116D23E00F0A98E /* floatingUpload */ = {
 			isa = PBXGroup;
 			children = (
+				2946A0C42116E84D00F0A98E /* TooCS.cer */,
+				2946A0C02116DA0700F0A98E /* share.png */,
 				2946A0AD2116D23E00F0A98E /* AppDelegate.swift */,
 				2946A0AF2116D23E00F0A98E /* ViewController.swift */,
 				2946A0B12116D23E00F0A98E /* Main.storyboard */,
 				2946A0B42116D23E00F0A98E /* Assets.xcassets */,
 				2946A0B62116D23E00F0A98E /* LaunchScreen.storyboard */,
 				2946A0B92116D23E00F0A98E /* Info.plist */,
+				2946A0C22116E79800F0A98E /* HTTPHandler.swift */,
+				2946A0C82116F4BF00F0A98E /* certificate.swift */,
+				295223B721196DE000200939 /* customTableViewCell.swift */,
+				295223B92119AD9000200939 /* upload.swift */,
 			);
 			path = floatingUpload;
+			sourceTree = "<group>";
+		};
+		88060CF05F8BD7AE3AA2FB78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55931CD78C09583744D2905A /* Pods_floatingUpload.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2946A0BC2116D23E00F0A98E /* Build configuration list for PBXNativeTarget "floatingUpload" */;
 			buildPhases = (
+				055D81B1347BD2DBFCAB4BD2 /* [CP] Check Pods Manifest.lock */,
 				2946A0A62116D23E00F0A98E /* Sources */,
 				2946A0A72116D23E00F0A98E /* Frameworks */,
 				2946A0A82116D23E00F0A98E /* Resources */,
+				07738AC1D4E06A77FB874055 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,13 +167,60 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2946A0C52116E84E00F0A98E /* TooCS.cer in Resources */,
 				2946A0B82116D23E00F0A98E /* LaunchScreen.storyboard in Resources */,
 				2946A0B52116D23E00F0A98E /* Assets.xcassets in Resources */,
 				2946A0B32116D23E00F0A98E /* Main.storyboard in Resources */,
+				2946A0C12116DA0700F0A98E /* share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		055D81B1347BD2DBFCAB4BD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-floatingUpload-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		07738AC1D4E06A77FB874055 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-floatingUpload/Pods-floatingUpload-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-floatingUpload/Pods-floatingUpload-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2946A0A62116D23E00F0A98E /* Sources */ = {
@@ -137,7 +228,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2946A0B02116D23E00F0A98E /* ViewController.swift in Sources */,
+				2946A0C32116E79800F0A98E /* HTTPHandler.swift in Sources */,
+				295223B821196DE000200939 /* customTableViewCell.swift in Sources */,
 				2946A0AE2116D23E00F0A98E /* AppDelegate.swift in Sources */,
+				295223BA2119AD9000200939 /* upload.swift in Sources */,
+				2946A0C92116F4BF00F0A98E /* certificate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +367,7 @@
 		};
 		2946A0BD2116D23E00F0A98E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E87D28FC5BD2C417D02075A1 /* Pods-floatingUpload.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +383,7 @@
 		};
 		2946A0BE2116D23E00F0A98E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F79250606C5FCC2AD28B4BB4 /* Pods-floatingUpload.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
