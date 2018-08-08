@@ -10,20 +10,16 @@ import UIKit
 
 class customTableViewCell: UITableViewCell {
 
-   
+   var obj = ViewController()
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var progrssBar: UIProgressView!
     @IBOutlet weak var progressLable: UILabel!
-//
-//    var timer : Timer!
-//    var uploadBar :  uploadClass? {
-//        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { time in
-//            print("Timer\(time)")
-//            progrssBar.progress = pro
-//
-//        })
-    //}
+    @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var pauseBtn: UIButton!
     
+    @IBAction func start(_ sender: Any) {
+        print(obj.uploadprogressList.count)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

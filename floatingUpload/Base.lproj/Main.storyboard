@@ -37,21 +37,37 @@
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ekE-4b-egp">
                                                     <rect key="frame" x="148" y="30" width="212" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="progressTintColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCG-Mp-NxI">
-                                                    <rect key="frame" x="233" y="70" width="42" height="21"/>
+                                                    <rect key="frame" x="166" y="49" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajC-Lu-XJA">
+                                                    <rect key="frame" x="267" y="45" width="68" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="pause"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="234-kn-lfY">
+                                                    <rect key="frame" x="278" y="83" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="start"/>
+                                                    <connections>
+                                                        <action selector="start:" destination="jTn-KR-vNe" eventType="touchUpInside" id="aVW-2n-sa2"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="pauseBtn" destination="ajC-Lu-XJA" id="lI8-G4-Cmc"/>
                                             <outlet property="photoImageView" destination="aeV-Ty-u0C" id="hfq-3W-D3j"/>
                                             <outlet property="progressLable" destination="dCG-Mp-NxI" id="rCq-zh-x4J"/>
                                             <outlet property="progrssBar" destination="ekE-4b-egp" id="Bb6-OO-24m"/>
+                                            <outlet property="startBtn" destination="234-kn-lfY" id="u7R-MY-Cby"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

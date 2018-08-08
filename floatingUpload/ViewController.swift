@@ -24,7 +24,6 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     
     let dispatch = DispatchGroup()
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -70,8 +69,10 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
                 
                 asset.requestContentEditingInput(with: photoOption, completionHandler: { contentEditingInput, info in
                    let imagePath = contentEditingInput?.fullSizeImageURL
-                    //self.libraryPathList.append(imagePath!)
-                    self.uploadImage(libraryPath : imagePath!)
+                    let upObj =  uploadClass()
+                    upObj.path = imagePath
+                    self.uploadprogressList.append(upObj)
+                    //self.uploadImage(libraryPath : imagePath!)
                        self.dispatch.leave()
                 })
                 
@@ -81,11 +82,12 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
                 PHImageManager.default().requestAVAsset(forVideo: asset, options: videoOption, resultHandler: { (asset, aucioMix, info) in
                     if let urlAsset = asset as? AVURLAsset {
                         let videPath = urlAsset.url
-                        //self.libraryPathList.append(videPath)
-                        self.uploadImage(libraryPath : videPath)
+                        let upObj =  uploadClass()
+                        upObj.path = videPath
+                        self.uploadprogressList.append(upObj)
                         self.dispatch.leave()
                     }else {
-                        self.uploadImage(libraryPath : nil)
+                        //self.uploadImage(libraryPath : nil)
                     }
                 })
             }
@@ -95,7 +97,8 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         }
         
         imagePicker.dismiss(animated: true, completion: nil)
-        dispatch.notify(queue: .main) { DispatchQueue.main.async {self.tableView.reloadData()}}
+        dispatch.notify(queue: .main) { print("self.uploadprogressList.append(upObj)--->>\(self.uploadprogressList.count)");
+            DispatchQueue.main.async {self.tableView.reloadData()}}
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
@@ -104,22 +107,28 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
     
 
 // UPLOAD PART
-    func uploadResult(result : SessionManager.MultipartFormDataEncodingResult, path : URL){
+    func uploadResult(result : SessionManager.MultipartFormDataEncodingResult, path : URL, index : IndexPath){
         
-        let uploadprogress = uploadClass(progress : 0, path : path)
-        self.uploadprogressList.append(uploadprogress)
+        let cell = self.tableView.cellForRow(at: index) as? customTableViewCell
         
         switch result {
         case .success(let upload,_,_):
-            upload.responseJSON { res in
+            let request = upload.responseJSON { res in
                 print("response --> \(res.result.value as Any)")
-
+                //self.uploadprogressList.removeAll()
+            }
+            for i in 0..<self.uploadprogressList.count {
+                if self.uploadprogressList[i].id == index {
+                   self.uploadprogressList[i].request = request
+                }
             }
             upload.uploadProgress { progress in
                 print("Upload Progress : \(progress.fractionCompleted)")
                 self.prgressReport = Float(progress.fractionCompleted)
-                // self.progressBarView.progress = Float(progress.fractionCompleted)
-                // let progressPercent = Int(progress.fractionCompleted * 100)
+                cell?.progrssBar.progress = Float(progress.fractionCompleted)
+                let progressPercent = Int(progress.fractionCompleted * 100)
+                cell?.progressLable.text = "\(progressPercent)%"
+                //self.progressBarView.progress = Float(progress.fractionCompleted)
                 // self.percentLabel.text = "\(progressPercent)%"
             }
             
@@ -130,13 +139,11 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         
     }
     
-    
-    func uploadImage(libraryPath : URL?){
+    func uploadImage(libraryPath : URL?, index: IndexPath){
        guard let serverPath = serverURL else { return }
-        HttpHandler.upload(serverPath: serverPath, libraryPath: libraryPath, sessionManager: sessionManager, completionHandler: uploadResult )
+        HttpHandler.upload(serverPath: serverPath, libraryPath: libraryPath, index: index,
+                           sessionManager: sessionManager, completionHandler: uploadResult )
        }
-    
-    
     
 // TableView DElegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,19 +153,36 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
         //return tableView.frame.size.height
         return 122
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellView = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! customTableViewCell
         
         let idx: Int = indexPath.row
-        
-        //cellView.progrssBar.progress = uploadprogressList[idx].progress!
+        cellView.progrssBar.progress = uploadprogressList[idx].progress
         displayImage(idx, photoCell: cellView)
         if idx % 2 == 0 {
             cellView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         }
-        
+        let  path = uploadprogressList[idx].path
+        uploadprogressList[idx].id = indexPath
+        print("uploadprogressList[idx].id---->>>\(self.uploadprogressList.count))")
+        self.uploadImage(libraryPath : path!, index :  indexPath)
+        cellView.pauseBtn.addTarget(self, action: #selector(ViewController.pauseUpload(sender:)), for: .touchUpInside)
         return cellView
     }
+    
+    @objc func pauseUpload(sender: AnyObject){
+        
+        let taskCell = sender.superview!!.superview! as! customTableViewCell
+        let cellIndexPath = self.tableView.indexPath(for: taskCell)
+        let obj = self.uploadprogressList.filter({
+            return $0.id == cellIndexPath!
+        })
+        obj[0].request!.suspend()
+        print("pause...\(String(describing: obj[0].request))")
+        
+    }
+    
     func displayImage(_ row: Int, photoCell: customTableViewCell) {
         
         let url = uploadprogressList[row].path
@@ -169,7 +193,5 @@ class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSou
             }
         }
     }
-    
-    
 }
 

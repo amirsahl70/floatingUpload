@@ -12,13 +12,13 @@ import SwiftyJSON
 
 class HttpHandler{
     
-    static func upload(serverPath : URL?, libraryPath :URL?, sessionManager:SessionManager, completionHandler : @escaping ( SessionManager.MultipartFormDataEncodingResult, URL) -> Void  ){
+    static func upload(serverPath : URL?, libraryPath :URL?, index: IndexPath, sessionManager:SessionManager, completionHandler : @escaping ( SessionManager.MultipartFormDataEncodingResult, URL, IndexPath) -> Void  ){
         sessionManager.upload( multipartFormData: { multipartFormData in
             multipartFormData.append(libraryPath!, withName: "file")
         },
         to: serverPath! , 
         encodingCompletion: { (encodingResult) in
-            completionHandler(encodingResult, libraryPath!)
+            completionHandler(encodingResult, libraryPath!, index)
         })
         
         certificate.SSLPinning(sessionManager: sessionManager)
